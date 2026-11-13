@@ -1,0 +1,71 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" />
+  <meta name="theme-color" content="#07141a" />
+  <link rel="icon" href="data:," />
+  <title>EMBERWAKE — Ashes of the Three Seas</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Manrope:wght@400;500;600;700;800&family=Oswald:wght@500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <div id="game" aria-label="Emberwake game world"></div>
+  <div class="vignette"></div>
+  <header class="topbar">
+    <a class="brand" href="#" aria-label="Emberwake home"><span class="brand-mark">✦</span><span>EMBER<span class="brand-lite">WAKE</span></span></a>
+    <div class="season"><span class="season-dot"></span><span id="seasonText">HARVEST MOON</span><i>•</i><span id="clockText">18:42</span></div>
+    <div class="top-actions"><button class="icon-btn" id="soundBtn" title="Sound">♫</button><button class="icon-btn" id="settingsBtn" title="Settings">⚙</button><button class="avatar" id="profileBtn">K</button></div>
+  </header>
+  <aside class="left-rail">
+    <button class="rail-btn active" data-panel="character"><span>◈</span><small>Character</small></button>
+    <button class="rail-btn" data-panel="inventory"><span>▣</span><small>Inventory</small></button>
+    <button class="rail-btn" data-panel="map"><span>⌖</span><small>World map</small></button>
+    <button class="rail-btn" data-panel="quests"><span>⚑</span><small>Quests</small></button>
+    <button class="rail-btn" data-panel="codex"><span>✧</span><small>Codex</small></button>
+  </aside>
+  <section class="player-card glass">
+    <div class="player-heading"><div class="player-emblem">K</div><div><div class="eyebrow">PIRATE OF THE ASHEN TIDE</div><h1 id="playerName">KAI</h1></div><button id="editName" class="subtle">✎</button></div>
+    <div class="rank-line"><span class="rank-tag">ROOKIE</span><span id="seaName">FIRST SEA</span><span class="coords" id="coords">0, 0</span></div>
+    <div class="level-line"><span>LV <b id="levelText">12</b></span><span class="xp-label"><b id="xpText">220</b> / <span id="xpNeeded">380</span> XP</span></div>
+    <div class="bar xp-bar"><i id="xpFill"></i></div>
+    <div class="stat-bars"><div><label>VITALITY</label><span id="healthNum">100 / 100</span><div class="bar health"><i id="healthFill"></i></div></div><div><label>ENERGY</label><span id="energyNum">100 / 100</span><div class="bar energy"><i id="energyFill"></i></div></div></div>
+    <div class="wallet"><span>◈ <b id="beliText">12,450</b><small> BELI</small></span><span>◇ <b id="fragmentText">80</b><small> FRAG</small></span></div>
+  </section>
+  <section class="quest-card glass" id="questCard">
+    <div class="quest-kicker"><span>ACTIVE CONTRACT</span><button id="cancelQuest" title="Abandon quest">×</button></div>
+    <h2 id="questTitle">Ash on the Shore</h2><p id="questDesc">Defeat 3 Shoreline Raiders</p>
+    <div class="quest-progress-row"><span id="questProgressText">0 / 3</span><span id="questReward">+240 XP · 380 Beli</span></div>
+    <div class="bar quest-progress"><i id="questFill"></i></div>
+    <button class="quest-action" id="questAction">TRACK CONTRACT <span>↗</span></button>
+  </section>
+  <div class="right-stack">
+    <button class="event-pill glass" id="eventBtn"><span class="pumpkin">✹</span><span><b>HARVEST MOON</b><small>Trick-or-treat · <i id="eventTimer">08:14</i></small></span><span class="chev">›</span></button>
+    <div class="minimap glass"><div class="map-grid"></div><div class="mini-island island-a"></div><div class="mini-island island-b"></div><div class="mini-player">▲</div><span class="map-label">EMBER COVE</span><button id="expandMap">↗</button></div>
+    <div class="nearby glass"><div class="eyebrow">NEARBY</div><div id="nearbyText"><i class="pulse-dot"></i> Shoreline Raider <span>24m</span></div></div>
+  </div>
+  <div class="bottom-left"><div class="controls-hint"><kbd>W</kbd><kbd>A</kbd><kbd>S</kbd><kbd>D</kbd><span>MOVE</span><kbd>SPACE</kbd><span>JUMP</span><kbd>Q</kbd><span>DASH</span></div><div class="interaction-hint" id="interactHint"><kbd>E</kbd> TALK TO <b>MARINER SORA</b></div></div>
+  <section class="combat-hud">
+    <div class="fruit-title"><span class="fruit-icon">♨</span><div><span class="eyebrow">MYTHICAL MUTATION</span><b>HELLFIRE GAS</b></div><button id="fruitInfo" title="Fruit details">i</button></div>
+    <div class="mastery-line"><span>MASTERY <b id="masteryText">73</b></span><span id="masteryXp">640 / 1,200</span></div><div class="bar mastery"><i id="masteryFill"></i></div>
+    <div class="meter-label"><span>INFERNAL RESONANCE</span><b id="meterText">62%</b></div><div class="bar hell-meter"><i id="meterFill"></i><span></span></div>
+    <div class="ability-row">
+      <button class="ability basic" data-skill="m1"><kbd> LMB </kbd><span class="ability-glyph">〰</span><b>HOT SLASHES</b></button>
+      <button class="ability" data-skill="z"><kbd>Z</kbd><span class="ability-glyph">✦</span><b>RUPTURE</b><small>1</small><i class="cooldown"></i></button>
+      <button class="ability locked" data-skill="f"><kbd>F</kbd><span class="ability-glyph">◉</span><b>PHANTOM</b><small>50</small><i class="cooldown"></i></button>
+      <button class="ability locked" data-skill="x"><kbd>X</kbd><span class="ability-glyph">✧</span><b>ONSLAUGHT</b><small>100</small><i class="cooldown"></i></button>
+      <button class="ability locked" data-skill="c"><kbd>C</kbd><span class="ability-glyph">♨</span><b>LEGION</b><small>200</small><i class="cooldown"></i></button>
+      <button class="ability locked" data-skill="v"><kbd>V</kbd><span class="ability-glyph">♜</span><b>ASCENSION</b><small>300</small><i class="cooldown"></i></button>
+    </div>
+    <div class="combat-note"><span class="tiny-flame">✹</span> <span id="combatMessage">Elemental Reflex active · Aura pierces immunity</span><span class="click-hint">CLICK TO ATTACK</span></div>
+  </section>
+  <div class="toast-stack" id="toasts"></div>
+  <div class="crosshair" id="crosshair"><i></i><b></b></div>
+  <div class="mobile-controls"><div class="joy" id="joy"><i></i></div><div class="mobile-actions"><button data-mobile="attack">⚔</button><button data-mobile="dash">➤</button><button data-mobile="jump">↑</button></div></div>
+  <div class="panel-scrim" id="scrim"><section class="game-panel glass" id="gamePanel"><button class="close-panel" id="closePanel">×</button><div id="panelContent"></div></section></div>
+  <div class="start-screen" id="startScreen"><div class="start-noise"></div><div class="start-content"><div class="start-logo"><span>✦</span> EMBERWAKE</div><p class="start-kicker">A THREE-SEAS ADVENTURE</p><h2>THE TIDE REMEMBERS<br><em>EVERY FLAME.</em></h2><p class="start-copy">Sail the Ashen Tide. Master a forbidden mutation.<br>Choose your legend beneath the Harvest Moon.</p><button id="playBtn" class="play-button">ENTER THE SEAS <span>→</span></button><div class="start-foot">ORIGINAL FAN-INSPIRED ADVENTURE · AUTOSAVES LOCALLY</div></div><div class="start-art"><div class="sun-orb"></div><div class="art-moon"></div><div class="art-ship">⛵</div><div class="start-silhouette"></div></div></div>
+  <script type="module" src="app.js"></script>
+</body>
+</html>
