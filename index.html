@@ -1,0 +1,43 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <meta name="theme-color" content="#07131c" />
+  <link rel="icon" href="data:," />
+  <title>Sea of Embers — Open World RPG</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <main id="game-shell">
+    <canvas id="world" aria-label="3D pirate adventure world"></canvas>
+    <div class="vignette"></div>
+    <header class="topbar">
+      <a class="brand" href="#" aria-label="Sea of Embers home"><span class="brand-mark">✦</span><span>SEA OF <b>EMBERS</b><small>AN OPEN WORLD RPG</small></span></a>
+      <div class="sea-label"><span class="live-dot"></span><span id="sea-name">FIRST SEA</span><i> / </i><span id="island-name">Windward Cay</span></div>
+      <div class="top-actions"><button class="icon-btn" id="map-toggle" title="Map (M)">⌖ <span>MAP</span></button><button class="icon-btn" id="menu-toggle" title="Menu">☰</button></div>
+    </header>
+    <section class="hud-left">
+      <div class="player-card"><div class="avatar">✦</div><div><strong>Wayfarer</strong><small id="race-label">Human • Adventurer</small></div><span class="rank">RANK 01</span></div>
+      <div class="level-line"><span>LV <b id="level">1</b></span><span id="xp-label">0 / 120 XP</span></div><div class="xp-track"><i id="xp-fill"></i></div>
+      <div class="stat-bars"><div class="bar-row health"><span>♥</span><div class="bar-track"><i id="health-fill"></i></div><b id="health-text">100 / 100</b></div><div class="bar-row energy"><span>✧</span><div class="bar-track"><i id="energy-fill"></i></div><b id="energy-text">100 / 100</b></div></div>
+      <div class="wallet"><span>◈ <b id="beli">2,500</b></span><span>✧ <b id="fragments">0</b></span></div>
+    </section>
+    <section class="quest-card" id="quest-card"><div class="quest-kicker"><span class="quest-gem">◆</span> ACTIVE CONTRACT <button id="abandon-quest" aria-label="Abandon quest">×</button></div><strong id="quest-title">A First Commission</strong><p id="quest-description">Speak with the island guide to begin your journey.</p><div class="quest-progress"><span id="quest-progress-label">Talk to the guide</span><b id="quest-count">0 / 1</b></div><div class="quest-rewards"><span>✦ <b id="quest-xp">120</b> XP</span><span>◈ <b id="quest-beli">350</b> Beli</span></div></section>
+    <section class="location-toast" id="location-toast"><span>DISCOVERED</span><b>Windward Cay</b><small>First Sea · Safe Harbor</small></section>
+    <aside class="right-rail"><button data-panel="fruit" class="rail-btn selected"><span>◉</span><small>FRUIT</small><kbd>F</kbd></button><button data-panel="inventory" class="rail-btn"><span>▤</span><small>BAG</small><kbd>I</kbd></button><button data-panel="stats" class="rail-btn"><span>⌁</span><small>STATS</small><kbd>P</kbd></button><button data-panel="world" class="rail-btn"><span>✥</span><small>WORLD</small><kbd>M</kbd></button></aside>
+    <section class="panel" id="game-panel" aria-live="polite"></section>
+    <div class="interaction" id="interaction"><span class="interact-key">E</span><span id="interaction-text">Talk to the island guide</span></div>
+    <div class="toast-stack" id="toast-stack"></div>
+    <div class="combat-feed" id="combat-feed"></div>
+    <div class="hotbar"><div class="hotbar-label"><span>HELLFIRE GAS</span><small>MYTHICAL MUTATION</small><i class="meter-track"><em id="hellfire-meter"></em></i></div><button class="skill active" data-skill="m1"><kbd>1</kbd><span>✹</span><small>EMBER JAB</small><i class="cooldown"></i></button><button class="skill" data-skill="2"><kbd>2</kbd><span>♨</span><small>CINDER VEIL</small><i class="cooldown"></i></button><button class="skill" data-skill="3"><kbd>3</kbd><span>◉</span><small>HELLSPARK</small><i class="cooldown"></i></button><button class="skill" data-skill="4"><kbd>4</kbd><span>⟡</span><small>INFERNO RING</small><i class="cooldown"></i></button><button class="skill" data-skill="5"><kbd>5</kbd><span>⤴</span><small>PHOENIX DRIFT</small><i class="cooldown"></i></button><button class="skill" data-skill="6"><kbd>6</kbd><span>☄</span><small>CINDERFALL</small><i class="cooldown"></i></button><button class="transform" id="transform"><span>♧</span><small>TRANSFORM</small><kbd>T</kbd></button></div>
+    <div class="controls-hint"><span>WASD</span> Move <i>·</i> <span>SPACE</span> Jump <i>·</i> <span>SHIFT</span> Dash <i>·</i> <span>CLICK</span> Attack</div>
+    <div class="mobile-controls"><div class="mobile-stick" id="mobile-stick"><span></span></div><div class="mobile-actions"><button id="mobile-jump">↑<small>JUMP</small></button><button id="mobile-attack">✹<small>ATTACK</small></button><button id="mobile-dash">»<small>DASH</small></button></div></div>
+    <div class="loading-screen" id="loading"><div class="loading-logo">✦</div><b>CHARTING THE HORIZON</b><span>Building the seas…</span><i><em></em></i></div>
+  </main>
+  <script type="module" src="game.js"></script>
+</body>
+</html>
